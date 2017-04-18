@@ -12,6 +12,9 @@ import { AppModule } from './app/app.node.module';
 import { environment } from './environments/environment';
 import { routes } from './server.routes';
 
+import userRoutes from './server/api/user';
+
+
 // App
 
 const app  = express();
@@ -46,6 +49,8 @@ app.use('/', express.static(path.join(ROOT, 'client'), {index: false}));
  * place your api routes here
  */
 // app.use('/api', api);
+app.use('/api/users', userRoutes);
+
 
 /**
  * bootstrap universal app
