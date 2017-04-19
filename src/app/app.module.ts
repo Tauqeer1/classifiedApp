@@ -2,8 +2,14 @@ import { NgModule } from '@angular/core';
 import { UniversalModule } from 'angular2-universal';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+
+//Routes
 import { appRoutes } from './routes/app.route';
 
+//Services
+import { HttpService, UserService } from './services';
+
+//Components
 import { AppComponent } from './index';
 import { RegisterComponent, LoginComponent } from './components';
 
@@ -20,8 +26,8 @@ import { RegisterComponent, LoginComponent } from './components';
         FormsModule,
         RouterModule.forRoot(appRoutes),
         UniversalModule
-    ],
-    providers: []
+    ],  
+    providers: [HttpService, UserService]
 })
 export class AppModule {
 
