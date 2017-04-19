@@ -1,0 +1,24 @@
+<div class="container center-div">
+    <form #registerForm="ngForm" (submit)="register(registerForm.valid, registerForm.value)" novalidate>
+        <div class="form-group">
+            <input type="text" name="username" #username="ngModel" class="form-control" placeholder="Username" ngModel required>
+            <div *ngIf="registerForm.submitted && !username.valid" class="help-block">Username is required</div>
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Email Address" ngModel required>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Password" ngModel required>
+        </div>
+        <div class="form-group">
+            <input type="file" name="file" class="form-control" ngModel>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <button type="submit" class="form-control btn btn-block btn-primary">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

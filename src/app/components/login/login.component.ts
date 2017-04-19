@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 })
 
 export class LoginComponent {
-
-    constructor() {}
+    title: string = 'Login Component';
+    constructor() {
+        console.log('Login component');
+    }
 }

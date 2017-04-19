@@ -10,6 +10,8 @@ export default {
 
     },
     create(req, res) {
+        console.log('req.file', req.file);
+        console.log('req.body', req.body);
         User.findOne({ email: req.body.email })
             .exec((err, userObj) => {
                 if (err) {
@@ -20,7 +22,7 @@ export default {
                         name: req.body.name,
                         email: req.body.email,
                         password: req.body.password,
-                        profile: req.body.profile
+                        profile: req.file
                     };
                     User.create(user)
                         .then(user => {

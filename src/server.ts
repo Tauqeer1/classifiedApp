@@ -9,6 +9,7 @@ import * as compression from 'compression';
 import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
 import * as morgan from 'morgan';
+import * as multer from 'multer';
 import { createEngine } from 'angular2-express-engine';
 import { enableProdMode } from '@angular/core';
 import { AppModule } from './app/app.node.module';
