@@ -18,7 +18,7 @@ export default {
                 if(user.validatePassword(password)) {
                     const currentUser = {
                         id: user._id,
-                        name: user.name,
+                        username: user.username,
                         email: user.email,
                         role: user.role
                     };

@@ -4,16 +4,16 @@ import * as bcrypt from 'bcrypt-nodejs';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name: { type: String, required: true },
+    username: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: { type: String, default: 'user' },
-    profile: { type: String },
+    profile: { type: String, default: '' },
     created: { type: Date, default: Date.now() }
 })
 
 export interface IUser extends mongoose.Document {
-    name: string,
+    username: string,
     email: string,
     password: string,
     role: string,

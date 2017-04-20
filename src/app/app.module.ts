@@ -7,11 +7,11 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes/app.route';
 
 //Services
-import { HttpService, UserService } from './services';
+import { HttpService, UserService, AuthService } from './services';
 
 //Components
 import { AppComponent } from './index';
-import { RegisterComponent, LoginComponent } from './components';
+import { NavigationComponent, RegisterComponent, LoginComponent, DashboardComponent } from './components';
 
 @NgModule({
     /** Root App Component */
@@ -19,15 +19,17 @@ import { RegisterComponent, LoginComponent } from './components';
     /** Our Components */
     declarations: [
         AppComponent,
+        NavigationComponent,
         RegisterComponent,
-        LoginComponent
+        LoginComponent,
+        DashboardComponent
     ],
     imports: [
         FormsModule,
         RouterModule.forRoot(appRoutes),
         UniversalModule
     ],  
-    providers: [HttpService, UserService]
+    providers: [HttpService, UserService, AuthService]
 })
 export class AppModule {
 

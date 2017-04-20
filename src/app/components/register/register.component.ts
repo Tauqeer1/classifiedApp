@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { UserService } from '../../services';
 
 @Component({
     selector: 'register',
@@ -10,25 +11,32 @@ import { Component } from '@angular/core';
 export class RegisterComponent {
 
     title: string = 'Register Component';
-    user: IUser = {
+    /*user: IUser = {
         name: '',
         email: '',
         password: '',
         profile: null
-    };
-    constructor() { }
+    };*/
+    constructor(private _userService: UserService, private router: Router) { }
 
-    handleFiles(event) {
+    /*handleFiles(event) {
         this.user.profile = event.target.files[0];
-    }
-    register() {  
-        console.log('registerForm', this.user);
+    }*/
+    register(valid, value) {
+        if(!valid) {
+            return;
+        }  
+        this._userService.create(value)
+            .subscribe(
+                data => {
+                    if(data.success) {
+                        this.router.navigate(['/login']);
+                    }
+                },
+                error => {
+                    console.error('error', error);
+                }
+            )
 
     }
-}
-export interface IUser {
-    name: string,
-    email: string,
-    password: string,
-    profile: File,
 }

@@ -11,5 +11,6 @@
  **/
 export const routes: string[] = [
     'login',
-    'register'
+    'register',
+    'dashboard'
 ];

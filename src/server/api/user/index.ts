@@ -11,7 +11,7 @@ const upload = multer({ dest: `upload/` });
 router.get('/', userController.index);
 router.get('/me',auth.isAuthenticated(), userController.me);
 router.get('/:id', userController.show);
-router.post('/', upload.single('profile'), userController.create);
+router.post('/', userController.create);
 router.put('/:id', userController.update);
 router.delete('/:id', userController.delete);
 

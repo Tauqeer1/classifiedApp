@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Http, Response,RequestMethod, RequestOptions, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -20,9 +20,17 @@ export class HttpService {
         options.headers = headers;
         return options;
     }
+    GetFormHeaders() {
+        let headers: Headers = new Headers();
+        headers.append('Content-type', 'multipart/form-data');
+        let options: RequestOptions = new RequestOptions();
+        options.headers = headers;
+        console.log('options', options);
+        return options;
+    }
     ResponseMap(res: Response) {
         let response: customServerResponseObject = res.json();
-        if(response && response.hasOwnProperty('success')) {
+        if (response && response.hasOwnProperty('success')) {
             return response;
         }
         else {
@@ -38,7 +46,10 @@ export class HttpService {
     }
     PostRequest(url: string, obj: Object): Observable<customServerResponseObject> {
         return this._http.post(url, obj, this.GetHeaders()).map(this.ResponseMap);
-    } 
+    }
+    PostFormData(url: string, obj: Object): Observable<customServerResponseObject> {
+        return this._http.post(url, obj, this.GetFormHeaders()).map(this.ResponseMap);
+    }
     PutRequest(url: string, obj: Object): Observable<customServerResponseObject> {
         return this._http.put(url, obj, this.GetHeaders()).map(this.ResponseMap);
     }
