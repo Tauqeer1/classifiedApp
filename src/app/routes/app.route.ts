@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './../guards';
 import {
     RegisterComponent,
     LoginComponent,
@@ -9,8 +10,8 @@ import {
 
 export const appRoutes: Routes = [
 
-    { path: 'dashboard', component: DashboardComponent },
+    { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: '**', redirectTo: 'dashboard' }
+    { path: '**', redirectTo: '' }
 ]

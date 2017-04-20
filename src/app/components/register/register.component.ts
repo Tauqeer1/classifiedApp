@@ -37,6 +37,5 @@ export class RegisterComponent {
                     console.error('error', error);
                 }
             )
-
     }
 }

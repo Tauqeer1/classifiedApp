@@ -8,6 +8,7 @@ import { appRoutes } from './routes/app.route';
 
 //Services
 import { HttpService, UserService, AuthService } from './services';
+import { AuthGuard } from '../app/guards';
 
 //Components
 import { AppComponent } from './index';
@@ -29,7 +30,7 @@ import { NavigationComponent, RegisterComponent, LoginComponent, DashboardCompon
         RouterModule.forRoot(appRoutes),
         UniversalModule
     ],  
-    providers: [HttpService, UserService, AuthService]
+    providers: [HttpService, UserService, AuthService, AuthGuard]
 })
 export class AppModule {
 
