@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpService } from './http.service';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
@@ -9,7 +10,7 @@ import { IUser } from '../models';
 export class AuthService {
 
     user$: BehaviorSubject<IUser> = new BehaviorSubject(this.emptyUser());
-    constructor(private _hs: HttpService) {
+    constructor(private _hs: HttpService, private router: Router) {
 
     }
 
@@ -21,6 +22,7 @@ export class AuthService {
                     let user = res['data'];
                     localStorage.setItem('user', JSON.stringify(user));
                     this.user$.next(user);
+                    this.router.navigate(['/']);
                 }
                 else {
                     console.log('error', res);
@@ -39,4 +41,9 @@ export class AuthService {
             token: ''
 		}
 	}
+
+    logout() {
+        localStorage.removeItem('user');
+        this.router.navigate(['/login']);
+    }
 }

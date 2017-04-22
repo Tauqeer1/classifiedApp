@@ -4,8 +4,10 @@
             <a [routerLink]="['/']" class="navbar-brand">Classified App</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a [routerLink]="['/register']">Register</a></li>
-            <li><a [routerLink]="['/login']">Login</a></li>
+            <li *ngIf="!user"><a [routerLink]="['/register']">Register</a></li>
+            <li *ngIf="!user"><a [routerLink]="['/login']">Login</a></li>
+            <li *ngIf="user"><a [routerLink]="['/add-post']">Add Post</a></li>
+            <li ><a (click)="logout()">Logout</a></li>
 
         </ul>
     </div>

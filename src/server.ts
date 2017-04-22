@@ -21,6 +21,7 @@ import config from './server/config/config';
 
 //server routes
 import userRoutes from './server/api/user';
+import postRoutes from './server/api/post';
 import authRoutes from './server/auth/';
 
 mongoose.connect(config.mongoURL);
@@ -68,6 +69,7 @@ app.use('/', express.static(path.join(ROOT, 'client'), {index: false}));
  */
 // app.use('/api', api);
 app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
 app.use('/api/auth', authRoutes);
 
 

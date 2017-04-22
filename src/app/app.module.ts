@@ -12,7 +12,13 @@ import { AuthGuard } from '../app/guards';
 
 //Components
 import { AppComponent } from './index';
-import { NavigationComponent, RegisterComponent, LoginComponent, DashboardComponent } from './components';
+import { 
+    NavigationComponent, 
+    RegisterComponent, 
+    LoginComponent, 
+    DashboardComponent,
+    AddPostComponent
+ } from './components';
 
 @NgModule({
     /** Root App Component */
@@ -23,7 +29,8 @@ import { NavigationComponent, RegisterComponent, LoginComponent, DashboardCompon
         NavigationComponent,
         RegisterComponent,
         LoginComponent,
-        DashboardComponent
+        DashboardComponent,
+        AddPostComponent
     ],
     imports: [
         FormsModule,

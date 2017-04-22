@@ -50,7 +50,7 @@ export function isAuthenticated() {
       if (token) {
         jwt.verify(token, config.jwtSecret, (err, verifiedJwt) => {
           if(err) {
-            return res.status(401).json({ error: 'Failed to authenticate' });
+            return res.status(401).json({ status: false, data: null, error: 'Failed to authenticate' });
           }
           else {
             req.user = verifiedJwt;
@@ -58,15 +58,18 @@ export function isAuthenticated() {
           }
         })
       }
+      else {
+        return res.status(401).json({ status: false, data: null, error: 'Token Missing'  });
+      }
     })
     .use((req, res, next) => {
       User.findOne(req.user._id)
         .exec((err, user) => {
           if(err) {
-            return res.status(400).json({error: err});
+            return res.status(400).json({ status: false, data: null, error: err});
           }
           else if(!user) {
-            return res.status(404).json({error: 'No such user'});
+            return res.status(404).json({status: false, data: null, error: 'No such user'});
           }
           req.user = user;
           next();
