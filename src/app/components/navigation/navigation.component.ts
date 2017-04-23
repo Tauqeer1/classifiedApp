@@ -14,16 +14,15 @@ export class NavigationComponent {
     user: IUser;
     constructor(private authService: AuthService) {
         this.authService.user$.subscribe(user => {
-            console.log('user', user);
-            
             if(user.token) {
-                console.log('working');
                 this.user = user;
+                console.log('this.user', this.user);
             }
         })
     }
 
     logout() {
+        this.user = {id: '', username: '', email: '',role: '', token: ''};
         this.authService.logout();
     }
 }

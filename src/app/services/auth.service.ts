@@ -9,16 +9,15 @@ import { IUser } from '../models';
 @Injectable()
 export class AuthService {
 
-    user$: BehaviorSubject<IUser> = new BehaviorSubject(this.emptyUser());
+    user$: BehaviorSubject<IUser> = new BehaviorSubject(this.getUser());
     constructor(private _hs: HttpService, private router: Router) {
-
+        
     }
 
     login(obj: Object) {
         this._hs.PostRequest('/api/auth', obj)
             .subscribe(res => {
                 if (res.success) {
-                    console.log('res', res);
                     let user = res['data'];
                     localStorage.setItem('user', JSON.stringify(user));
                     this.user$.next(user);
@@ -32,18 +31,13 @@ export class AuthService {
                 console.error('err', err.json());
             })
     }
-    emptyUser() {
-		return {
-			id: '',
-			username: '',
-            email: '',
-            role: '',
-            token: ''
-		}
+    getUser() {
+        return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : { id: '', username: '', email: '', role: '', token: '' };
 	}
 
     logout() {
         localStorage.removeItem('user');
+        this.user$.next(this.getUser());
         this.router.navigate(['/login']);
     }
 }

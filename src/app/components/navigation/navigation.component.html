@@ -7,7 +7,7 @@
             <li *ngIf="!user"><a [routerLink]="['/register']">Register</a></li>
             <li *ngIf="!user"><a [routerLink]="['/login']">Login</a></li>
             <li *ngIf="user"><a [routerLink]="['/add-post']">Add Post</a></li>
-            <li ><a (click)="logout()">Logout</a></li>
+            <li *ngIf="user"><a (click)="logout()">Logout</a></li>
 
         </ul>
     </div>
