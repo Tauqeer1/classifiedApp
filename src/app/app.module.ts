@@ -17,7 +17,10 @@ import {
     RegisterComponent, 
     LoginComponent, 
     DashboardComponent,
-    AddPostComponent
+    PostsComponent,
+    AddPostComponent,
+    PostCardComponent,
+    PostDetailComponent
  } from './components';
 
 @NgModule({
@@ -30,7 +33,10 @@ import {
         RegisterComponent,
         LoginComponent,
         DashboardComponent,
-        AddPostComponent
+        PostsComponent,
+        AddPostComponent,
+        PostCardComponent,
+        PostDetailComponent
     ],
     imports: [
         FormsModule,

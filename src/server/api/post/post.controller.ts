@@ -4,7 +4,13 @@ import config from '../../config/config';
 
 export default {
     index(req, res) {
-
+        Post.find({})
+            .exec((err, posts) => {
+                if(err) {
+                    return res.status(400).json({ success: false, data: null, error: err });
+                }
+                return res.status(200).json({success: true, data: posts, error: null});
+            });
     },
     show(req, res) {
 
@@ -20,11 +26,11 @@ export default {
         }
         Post.create(post)
             .then(post => {
-                return res.json({ success: true, data: 'Post created', error: null });
+                return res.status(200).json({ success: true, data: post, error: null });
             })
             .catch(err => {
                 console.error('err', err);
-                return res.json({ success: false, data: null, error: err });
+                return res.status(400).json({ success: false, data: null, error: err });
             });
 
     },

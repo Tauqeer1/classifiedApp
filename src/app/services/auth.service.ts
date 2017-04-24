@@ -8,8 +8,9 @@ import { IUser } from '../models';
 
 @Injectable()
 export class AuthService {
-
+    
     user$: BehaviorSubject<IUser> = new BehaviorSubject(this.getUser());
+    
     constructor(private _hs: HttpService, private router: Router) {
         
     }

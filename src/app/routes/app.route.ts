@@ -4,7 +4,8 @@ import {
     RegisterComponent,
     LoginComponent,
     DashboardComponent,
-    AddPostComponent
+    AddPostComponent,
+    PostDetailComponent
 } from '../components';
 
 
@@ -15,5 +16,6 @@ export const appRoutes: Routes = [
     { path: 'add-post', component:  AddPostComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'posts/:id', component: PostDetailComponent },
     { path: '**', redirectTo: '' }
 ]

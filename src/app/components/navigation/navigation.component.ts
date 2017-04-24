@@ -13,6 +13,7 @@ export class NavigationComponent {
     
     user: IUser;
     constructor(private authService: AuthService) {
+        
         this.authService.user$.subscribe(user => {
             if(user.token) {
                 this.user = user;

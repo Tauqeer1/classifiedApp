@@ -1,0 +1,14 @@
+<div class="thumbnail">
+  <img src="assets/img/abstract-image.jpg" *ngIf="!post.images" />
+  <div class="caption">
+    <h4 class="text-ellipsis">
+      <a routerLink="/posts/{{post['_id']}}" title="{{post['ad_title']}}">{{post["ad_title"]}}</a>
+    </h4>
+    <p><strong>Category : </strong> {{post['category']}}</p>
+    <p><strong>Brand name : </strong> {{post['brand_name']}}</p>
+    <p><strong>Price : </strong> ${{post['price']}}</p>
+    <p>
+      <a routerLink="/posts/{{post['_id']}}">View details</a>
+    </p>
+  </div>
+</div>

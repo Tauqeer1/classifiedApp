@@ -17,11 +17,12 @@ export class AddPostComponent {
             return;
         }
         console.log('value', value);
-        this._postService.addPost(value)
-            .subscribe(post => {
+        this._postService.addPost(value);
+            /*.subscribe(post => {
                 console.log('post',post);
+                this._postService.post$.next(post.data);
             }, err => {
                 console.error('err', err.json());
-            })
+            })*/
     }
 }
