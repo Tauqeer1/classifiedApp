@@ -9,13 +9,13 @@ import { AuthService } from '../../services/auth.service';
 
 export class LoginComponent {
 
-    constructor(private authService: AuthService) {
+    constructor(private _authService: AuthService) {
     }
 
     login(valid, value) {
         if (!valid) {
             return;
         }
-        this.authService.login(value);
+        this._authService.login(value);
     }
 }

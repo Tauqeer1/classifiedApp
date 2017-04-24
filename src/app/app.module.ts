@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes/app.route';
 
 //Services
-import { HttpService, UserService, AuthService } from './services';
+import { HttpService, UserService, AuthService, PostService } from './services';
 import { AuthGuard } from '../app/guards';
 
 //Components
@@ -37,7 +37,7 @@ import {
         RouterModule.forRoot(appRoutes),
         UniversalModule
     ],  
-    providers: [HttpService, UserService, AuthService, AuthGuard]
+    providers: [HttpService, UserService, AuthService, PostService, AuthGuard]
 })
 export class AppModule {
 

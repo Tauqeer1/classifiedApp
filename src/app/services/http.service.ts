@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Response,RequestMethod, RequestOptions, Headers } from '@angular/http';
+import { Http, Response, RequestMethod, RequestOptions, Headers } from '@angular/http';
+
 
 import { Observable } from 'rxjs/Observable';
-
 import 'rxjs/add/operator/map';
 
 
@@ -16,6 +16,12 @@ export class HttpService {
     GetHeaders() {
         let headers: Headers = new Headers();
         headers.append('Content-Type', 'application/json');
+        if(localStorage.getItem('user')) {
+            let user = JSON.parse(localStorage.getItem('user'));
+            console.log('user', user);
+            console.log('token', user['token']);
+            headers.append('Authorization', user['token']);
+        }
         let options: RequestOptions = new RequestOptions();
         options.headers = headers;
         return options;

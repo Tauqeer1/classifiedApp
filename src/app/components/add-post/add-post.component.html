@@ -1,0 +1,34 @@
+<div class="container center-div">
+    <form #addPostForm="ngForm" (submit)="addPost(addPostForm.valid, addPostForm.value)" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': addPostForm.submitted && category.invalid }">
+            <input type="text" name="category" #category="ngModel"  class="form-control" placeholder="Category" ngModel required>
+            <div *ngIf="addPostForm.submitted && category.invalid" class="help-block">Category is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': addPostForm.submitted && adTitle.invalid }">
+            <input type="text" name="adTitle" #adTitle="ngModel" class="form-control" placeholder="Ad Title" ngModel required>
+            <div *ngIf="addPostForm.submitted && adTitle.invalid" class="help-block">Title is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': addPostForm.submitted && brandName.invalid }">
+            <input type="text" name="brandName" #brandName="ngModel" class="form-control" placeholder="Brandname" ngModel required>
+            <div *ngIf="addPostForm.submitted && brandName.invalid" class="help-block">Name is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': addPostForm.submitted && brandDescription.invalid}">
+            <input type="text" name="brandDescription" #brandDescription="ngModel" class="form-control" placeholder="Description" ngModel required>
+            <div *ngIf="addPostForm.submitted && brandDescription.invalid" class="help-block">Description is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': addPostForm.submitted && price.invalid }">
+            <input type="number" name="price" #price="ngModel" class="form-control" placeholder="Price" ngModel required>
+            <div *ngIf="addPostForm.submitted && price.invalid" class="help-block">Price is required</div>
+        </div>
+        <!--<div class="form-group">
+            <input type="file" name="profile" (change)="handleFiles($event)" class="form-control" accept="image/*" >
+        </div>-->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <button type="submit" class="form-control btn btn-block btn-primary">Add Post</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

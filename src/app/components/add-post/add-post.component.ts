@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { PostService } from '../../services';
 
 @Component({
     selector: 'add-post',
@@ -10,7 +10,18 @@ import { Component } from '@angular/core';
 
 export class AddPostComponent {
 
-    constructor() {
+    constructor(private _postService: PostService) { }
 
+    addPost(valid, value) {
+        if (!valid) {
+            return;
+        }
+        console.log('value', value);
+        this._postService.addPost(value)
+            .subscribe(post => {
+                console.log('post',post);
+            }, err => {
+                console.error('err', err.json());
+            })
     }
 }
