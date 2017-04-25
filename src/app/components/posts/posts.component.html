@@ -1,4 +1,7 @@
 <div class="container">
+    <!--<p>0 <input type="range" min="0" value="0" max="1000" [(ngModel)]="sliderValue">1000</p>-->
+    <input type="text" id="pr1" name="price"  data-provide="slider"  data-slider-min="0" data-slider-max="1000" data-slider-step="1" data-slider-value="1">
+    <span>{{sliderValue}}</span>
     <div class="row">
         <div class="col-sm-3" *ngFor="let post of postList">
             <post-card [post]="post"></post-card>

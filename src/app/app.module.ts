@@ -10,6 +10,8 @@ import { appRoutes } from './routes/app.route';
 import { HttpService, UserService, AuthService, PostService } from './services';
 import { AuthGuard } from '../app/guards';
 
+//Pipes 
+import { PricePipe } from './pipes/price.pipe';
 //Components
 import { AppComponent } from './index';
 import { 
@@ -36,7 +38,8 @@ import {
         PostsComponent,
         AddPostComponent,
         PostCardComponent,
-        PostDetailComponent
+        PostDetailComponent,
+        PricePipe
     ],
     imports: [
         FormsModule,
