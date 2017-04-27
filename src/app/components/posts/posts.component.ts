@@ -3,7 +3,7 @@ import { PostService } from '../../services/post.service';
 import { IPost } from '../../models';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
-import { Subject } from 'rxjs/Subject';
+import { Subject, BehaviorSubject } from 'rxjs';
 // import 'rxjs';
 
 
@@ -19,16 +19,24 @@ import { Subject } from 'rxjs/Subject';
 export class PostsComponent implements OnInit {
 
     priceValue: number = 0;
-    postList: IPost[];
-    
+    postList$: Observable<IPost[]>;
+    term$: BehaviorSubject<string> = new BehaviorSubject("");
+
     constructor(private _postService: PostService) {
-        this._postService.posts$.subscribe(posts => {
-            this.postList = posts;
-        });
+        this.postList$ = Observable.combineLatest(
+            this._postService.posts$,
+            this.term$,
+            (posts: Array<IPost>, term: string) => {
+                return term ? posts.filter((post: IPost) => post.category == term) : posts;
+            }
+        )
     }
 
     ngOnInit() {
-        this._postService.loadAllPosts();
+        // this._postService.loadAllPosts();
+        /*this.postList$.subscribe(posts => {
+            console.log('posts', posts);
+        })*/
         /*console.log('sliderValue initial ', this.sliderValue);
         
         $('#pr1').on('change', (event) => {
