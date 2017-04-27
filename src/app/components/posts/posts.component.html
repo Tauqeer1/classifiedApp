@@ -1,7 +1,7 @@
 <div class="container">
     <form class="form-inline">
         <label for="Category">Category</label>
-        <input type="text" name="category"  class="form-control" placeholder="Category">
+        <input type="text" name="category"(keyup)="term$.next($event.target.value)"  class="form-control" placeholder="Category">
 
         <label for="Price">Price</label>
         <input type="range" name="price" class="form-control" min="0" value="0" width="50%" max="1000" [(ngModel)]="priceValue">
@@ -12,7 +12,7 @@
     <input type="text" class="col-md-4 form-control">
     <br>-->
     <div class="row">
-        <div class="col-sm-3" *ngFor="let post of postList | filterByPrice:priceValue">
+        <div class="col-sm-3" *ngFor="let post of postList$ | async  | filterByPrice:priceValue">
             <post-card [post]="post"></post-card>
         </div>
     </div>
