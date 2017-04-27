@@ -14,16 +14,16 @@ import { AuthGuard } from '../app/guards';
 import { PricePipe } from './pipes/price.pipe';
 //Components
 import { AppComponent } from './index';
-import { 
-    NavigationComponent, 
-    RegisterComponent, 
-    LoginComponent, 
+import {
+    NavigationComponent,
+    RegisterComponent,
+    LoginComponent,
     DashboardComponent,
     PostsComponent,
     AddPostComponent,
     PostCardComponent,
     PostDetailComponent
- } from './components';
+} from './components';
 
 @NgModule({
     /** Root App Component */
@@ -45,7 +45,7 @@ import {
         FormsModule,
         RouterModule.forRoot(appRoutes),
         UniversalModule
-    ],  
+    ],
     providers: [HttpService, UserService, AuthService, PostService, AuthGuard]
 })
 export class AppModule {
