@@ -7,8 +7,6 @@ export class PricePipe implements PipeTransform {
 
     transform(posts: IPost[], args: any) {
 
-        console.log('value', posts);
-        console.log('args', args);
         if(args == undefined || args == 0) {
             return posts;
         }

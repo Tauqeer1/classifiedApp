@@ -1,5 +1,6 @@
 <div class="thumbnail">
   <img src="assets/img/abstract-image.jpg" *ngIf="!post.images" />
+  <img [src]="post['images']" *ngIf="post['images']">
   <div class="caption">
     <h4 class="text-ellipsis">
       <a routerLink="/posts/{{post['_id']}}" title="{{post['ad_title']}}">{{post["ad_title"]}}</a>

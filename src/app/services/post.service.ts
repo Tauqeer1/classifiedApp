@@ -26,7 +26,6 @@ export class PostService {
     loadAllPosts() {
         this._hs.GetRequest('/api/posts')
             .subscribe(res => {
-                console.log('res', res);
                 if (res.success) {
                     let posts = res['data'];
                     this.posts$.next(posts);

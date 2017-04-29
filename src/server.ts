@@ -9,7 +9,6 @@ import * as compression from 'compression';
 import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
 import * as morgan from 'morgan';
-import * as multer from 'multer';
 import { createEngine } from 'angular2-express-engine';
 import { enableProdMode } from '@angular/core';
 import { AppModule } from './app/app.node.module';
@@ -56,13 +55,14 @@ app.set('view engine', 'html');
  */
 app.use(compression());
 app.use(bodyParser.json({limit: '20mb'}));
-app.use(bodyParser.urlencoded({limit: '20mb', extended: false}));
+app.use(bodyParser.urlencoded({limit: '20mb', extended: true}));
 app.use(morgan('dev'));
 
 /**
  * serve static files
  */
 app.use('/', express.static(path.join(ROOT, 'client'), {index: false}));
+// app.use('/uploads', express.static(path.join(ROOT, 'uploads'), {index: false}));
 
 /**
  * place your api routes here

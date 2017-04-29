@@ -16,16 +16,20 @@ export default {
 
     },
     create(req, res) {
+        console.log('req.body', req.body);
         let post = {
             category: req.body.category,
             ad_title: req.body.adTitle,
             brand_name: req.body.brandName,
             brand_description: req.body.brandDescription,
             posted_by: req.user._id,
+            images: req.body.image,
             price: req.body.price
-        }
+        };
+        console.log('post', post);
         Post.create(post)
             .then(post => {
+                console.log('post', post);
                 return res.status(200).json({ success: true, data: post, error: null });
             })
             .catch(err => {

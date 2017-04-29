@@ -20,7 +20,7 @@ export class AuthService {
             .subscribe(res => {
                 if (res.success) {
                     let user = res['data'];
-                    localStorage.setItem('user', JSON.stringify(user));
+                    window.localStorage.setItem('user', JSON.stringify(user));
                     this.user$.next(user);
                     this.router.navigate(['/']);
                 }
@@ -33,11 +33,11 @@ export class AuthService {
             })
     }
     getUser() {
-        return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : { id: '', username: '', email: '', role: '', token: '' };
+        return window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : { id: '', username: '', email: '', role: '', token: '' };
 	}
 
     logout() {
-        localStorage.removeItem('user');
+        window.localStorage.removeItem('user');
         this.user$.next(this.getUser());
         this.router.navigate(['/login']);
     }

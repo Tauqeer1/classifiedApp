@@ -17,7 +17,6 @@ export class NavigationComponent {
         this.authService.user$.subscribe(user => {
             if(user.token) {
                 this.user = user;
-                console.log('this.user', this.user);
             }
         })
     }

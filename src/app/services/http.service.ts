@@ -18,7 +18,6 @@ export class HttpService {
         headers.append('Content-Type', 'application/json');
         if(localStorage.getItem('user')) {
             let user = JSON.parse(localStorage.getItem('user'));
-            console.log('user', user);
             console.log('token', user['token']);
             headers.append('Authorization', user['token']);
         }
@@ -28,10 +27,15 @@ export class HttpService {
     }
     GetFormHeaders() {
         let headers: Headers = new Headers();
-        headers.append('Content-type', 'multipart/form-data');
+        // headers.append('Content-type', 'multipart/form-data');
+        // headers.append('Accept', 'application/json');
+         if(localStorage.getItem('user')) {
+            let user = JSON.parse(localStorage.getItem('user'));
+            console.log('token', user['token']);
+            headers.append('Authorization', user['token']);
+        }
         let options: RequestOptions = new RequestOptions();
         options.headers = headers;
-        console.log('options', options);
         return options;
     }
     ResponseMap(res: Response) {
