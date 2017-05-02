@@ -1,0 +1,28 @@
+<div class="container center-div">
+    <form #userForm="ngForm" (submit)="saveUser(userForm.valid, userForm.value)" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && username.invalid }">
+            <input type="text" name="username" #username="ngModel" [ngModel]="user.username" class="form-control" placeholder="Username"
+                ngModel required>
+            <div *ngIf="userForm.submitted && username.invalid" class="help-block">Username is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && email.invalid }">
+            <input type="email" name="email" #email="ngModel" [ngModel]="user.email" class="form-control" placeholder="Email Address"
+                ngModel required>
+            <div *ngIf="userForm.submitted && email.invalid" class="help-block">Email is required</div>
+        </div>
+        <div class="form-group">
+            <input type="file" name="profile" (change)="handleFiles($event)" class="form-control" accept="image/*">
+        </div>
+        <div>
+            <img class="profile-image" [src]="user['profile']" *ngIf="user.profile">
+            <img class="profile-image" src="assets/img/abstract-image.jpg" *ngIf="!user.profile" />
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <button type="submit" class="form-control btn btn-block btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

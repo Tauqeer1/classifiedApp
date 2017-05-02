@@ -8,6 +8,12 @@
             <li *ngIf="!user"><a [routerLink]="['/login']">Login</a></li>
             <li *ngIf="user"><a [routerLink]="['/add-post']">Add Post</a></li>
             <li *ngIf="user"><a (click)="logout()">Logout</a></li>
+            <li *ngIf="user">
+                <a [routerLink]="['user', user.id]">
+                    <img class="profile-image"  [src]="user['profile']" *ngIf="user.profile">
+                    <img class="profile-image" src="assets/img/abstract-image.jpg" *ngIf="!user.profile" />
+                </a>
+            </li>
 
         </ul>
     </div>

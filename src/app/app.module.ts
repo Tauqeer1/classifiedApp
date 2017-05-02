@@ -22,7 +22,8 @@ import {
     PostsComponent,
     AddPostComponent,
     PostCardComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    EditUserComponent
 } from './components';
 
 @NgModule({
@@ -39,6 +40,7 @@ import {
         AddPostComponent,
         PostCardComponent,
         PostDetailComponent,
+        EditUserComponent,
         PricePipe
     ],
     imports: [

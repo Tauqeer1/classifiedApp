@@ -6,3 +6,4 @@ export { AddPostComponent } from './add-post/add-post.component';
 export { PostsComponent } from './posts/posts.component';
 export { PostCardComponent } from './post-card/post-card.component';
 export { PostDetailComponent } from './post-detail/post-detail.component';
+export { EditUserComponent } from './edit-user/edit-user.component';

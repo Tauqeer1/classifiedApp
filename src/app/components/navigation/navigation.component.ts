@@ -22,7 +22,7 @@ export class NavigationComponent {
     }
 
     logout() {
-        this.user = {id: '', username: '', email: '',role: '', token: ''};
+        this.user = {id: '', username: '', email: '',role: '', profile: '', token: ''};
         this.authService.logout();
     }
 }

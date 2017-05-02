@@ -5,7 +5,8 @@ import {
     LoginComponent,
     DashboardComponent,
     AddPostComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    EditUserComponent
 } from '../components';
 
 
@@ -17,5 +18,6 @@ export const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'posts/:id', component: PostDetailComponent },
+    { path: 'user/:id', component: EditUserComponent },
     { path: '**', redirectTo: '' }
 ]
