@@ -20,14 +20,10 @@ export class AddPostComponent {
             return;
         }
         if (this.file) {
-            console.log('value', value);
-            console.log('image', this.image);
             value['image'] = this.image;
-            console.log('value', value);
             this._postService.addPost(value);
         }
         else {
-            console.log('value', value);
             this._postService.addPost(value);
         }
     }

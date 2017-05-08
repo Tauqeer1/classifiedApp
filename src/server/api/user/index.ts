@@ -12,7 +12,7 @@ router.get('/', userController.index);
 router.get('/me',auth.isAuthenticated(), userController.me);
 router.get('/:id', userController.show);
 router.post('/', userController.create);
-router.put('/:id', userController.update);
+router.put('/:id',auth.isAuthenticated(), userController.update);
 router.delete('/:id', userController.delete);
 
 export default router;

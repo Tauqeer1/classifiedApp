@@ -10,18 +10,8 @@ import { UserService } from '../../services';
 
 export class RegisterComponent {
 
-    title: string = 'Register Component';
-    /*user: IUser = {
-        name: '',
-        email: '',
-        password: '',
-        profile: null
-    };*/
     constructor(private _userService: UserService, private router: Router) { }
 
-    /*handleFiles(event) {
-        this.user.profile = event.target.files[0];
-    }*/
     register(valid, value) {
         if(!valid) {
             return;

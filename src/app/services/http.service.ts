@@ -18,7 +18,6 @@ export class HttpService {
         headers.append('Content-Type', 'application/json');
         if(localStorage.getItem('user')) {
             let user = JSON.parse(localStorage.getItem('user'));
-            console.log('token', user['token']);
             headers.append('Authorization', user['token']);
         }
         let options: RequestOptions = new RequestOptions();
